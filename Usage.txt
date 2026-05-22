@@ -1,0 +1,16 @@
+Execute this command when changing/creating grammar:
+	rm -rf gen bin
+	mkdir bin
+
+	Command for when updating/creating grammar:
+	antlr4 -visitor -no-listener -o gen Nutrition.g4
+
+   javac -d bin -cp ".:lib/*" $(find gen src -name "*.java")
+
+   To run the program manually:
+   echo "Recipe: 80(g) OF salmon" | java -cp "bin:lib/*" Driver
+
+Testing Tokens:
+
+echo "Spring 2026" | java -cp $CP:. org.antlr.v4.gui.TestRig NutritionLexer tokens -tokens
+echo "Recipe: 80(g) OF salmon" | java -cp "bin:lib/*" NutritionLexer tokens -tokens
