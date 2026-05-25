@@ -12,5 +12,7 @@ Execute this command when changing/creating grammar:
 
 Testing Tokens:
 
-echo "Spring 2026" | java -cp $CP:. org.antlr.v4.gui.TestRig NutritionLexer tokens -tokens
-echo "Recipe: 80(g) OF salmon" | java -cp "bin:lib/*" NutritionLexer tokens -tokens
+
+echo "Recipe: 80(g) OF salmon" | java -cp "bin:lib/*" org.antlr.v4.gui.TestRig NutritionLexer tokens -tokens
+ echo "Item: 3/4(cups) OF salmon fresh" | java -cp "bin:lib/*" org.ant
+lr.v4.gui.TestRig NutritionLexer tokens -tokens

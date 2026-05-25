@@ -17,7 +17,7 @@ public class NutritionParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, RECIPE=6, ITEM=7, MACROS=8, PROTEIN=9, 
-		CARBS=10, FATS=11, CALORIES=12, ID=13, INT=14, WS=15;
+		CARBS=10, FATS=11, CALORIES=12, FRACTION=13, ID=14, INT=15, WS=16;
 	public static final int
 		RULE_calculate = 0, RULE_query = 1, RULE_recipe = 2, RULE_item = 3, RULE_ingredients = 4, 
 		RULE_measurements = 5, RULE_units = 6, RULE_name = 7, RULE_value = 8, 
@@ -40,7 +40,7 @@ public class NutritionParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, "RECIPE", "ITEM", "MACROS", "PROTEIN", 
-			"CARBS", "FATS", "CALORIES", "ID", "INT", "WS"
+			"CARBS", "FATS", "CALORIES", "FRACTION", "ID", "INT", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -254,7 +254,7 @@ public class NutritionParser extends Parser {
 				setState(39); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==ID || _la==INT );
+			} while ( _la==FRACTION || _la==INT );
 			}
 		}
 		catch (RecognitionException re) {
@@ -498,6 +498,7 @@ public class NutritionParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ValueContext extends ParserRuleContext {
+		public TerminalNode FRACTION() { return getToken(NutritionParser.FRACTION, 0); }
 		public TerminalNode ID() { return getToken(NutritionParser.ID, 0); }
 		public TerminalNode INT() { return getToken(NutritionParser.INT, 0); }
 		public ValueContext(ParserRuleContext parent, int invokingState) {
@@ -514,20 +515,28 @@ public class NutritionParser extends Parser {
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_value);
-		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(61);
-			_la = _input.LA(1);
-			if ( !(_la==ID || _la==INT) ) {
-			_errHandler.recoverInline(this);
-			}
-			else {
-				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-				_errHandler.reportMatch(this);
-				consume();
-			}
+			setState(64);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case FRACTION:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(61);
+				match(FRACTION);
+				setState(62);
+				match(ID);
+				}
+				break;
+			case INT:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(63);
+				match(INT);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -568,21 +577,21 @@ public class NutritionParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(63);
+			setState(66);
 			match(MACROS);
-			setState(64);
+			setState(67);
 			match(T__4);
-			setState(66); 
+			setState(69); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(65);
+				setState(68);
 				types();
 				}
 				}
-				setState(68); 
+				setState(71); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 7680L) != 0) );
@@ -623,7 +632,7 @@ public class NutritionParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(70);
+			setState(73);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7680L) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -647,7 +656,7 @@ public class NutritionParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u000fI\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u0010L\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0001\u0000\u0001\u0000\u0001"+
@@ -657,14 +666,14 @@ public class NutritionParser extends Parser {
 		"\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0001\u0004\u0004\u0004"+
 		"1\b\u0004\u000b\u0004\f\u00042\u0001\u0005\u0001\u0005\u0001\u0005\u0001"+
 		"\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001"+
-		"\b\u0001\b\u0001\t\u0001\t\u0001\t\u0004\tC\b\t\u000b\t\f\tD\u0001\n\u0001"+
-		"\n\u0001\n\u0000\u0000\u000b\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010"+
-		"\u0012\u0014\u0000\u0002\u0001\u0000\r\u000e\u0001\u0000\t\fC\u0000\u0016"+
+		"\b\u0001\b\u0001\b\u0003\bA\b\b\u0001\t\u0001\t\u0001\t\u0004\tF\b\t\u000b"+
+		"\t\f\tG\u0001\n\u0001\n\u0001\n\u0000\u0000\u000b\u0000\u0002\u0004\u0006"+
+		"\b\n\f\u000e\u0010\u0012\u0014\u0000\u0001\u0001\u0000\t\fG\u0000\u0016"+
 		"\u0001\u0000\u0000\u0000\u0002 \u0001\u0000\u0000\u0000\u0004\"\u0001"+
 		"\u0000\u0000\u0000\u0006)\u0001\u0000\u0000\u0000\b-\u0001\u0000\u0000"+
 		"\u0000\n4\u0001\u0000\u0000\u0000\f9\u0001\u0000\u0000\u0000\u000e;\u0001"+
-		"\u0000\u0000\u0000\u0010=\u0001\u0000\u0000\u0000\u0012?\u0001\u0000\u0000"+
-		"\u0000\u0014F\u0001\u0000\u0000\u0000\u0016\u0017\u0003\u0002\u0001\u0000"+
+		"\u0000\u0000\u0000\u0010@\u0001\u0000\u0000\u0000\u0012B\u0001\u0000\u0000"+
+		"\u0000\u0014I\u0001\u0000\u0000\u0000\u0016\u0017\u0003\u0002\u0001\u0000"+
 		"\u0017\u0001\u0001\u0000\u0000\u0000\u0018\u001a\u0003\u0004\u0002\u0000"+
 		"\u0019\u001b\u0003\u0012\t\u0000\u001a\u0019\u0001\u0000\u0000\u0000\u001a"+
 		"\u001b\u0001\u0000\u0000\u0000\u001b!\u0001\u0000\u0000\u0000\u001c\u001e"+
@@ -681,12 +690,14 @@ public class NutritionParser extends Parser {
 		"23\u0001\u0000\u0000\u00003\t\u0001\u0000\u0000\u000045\u0003\u0010\b"+
 		"\u000056\u0005\u0003\u0000\u000067\u0003\f\u0006\u000078\u0005\u0004\u0000"+
 		"\u00008\u000b\u0001\u0000\u0000\u00009:\u0003\u0010\b\u0000:\r\u0001\u0000"+
-		"\u0000\u0000;<\u0003\u0010\b\u0000<\u000f\u0001\u0000\u0000\u0000=>\u0007"+
-		"\u0000\u0000\u0000>\u0011\u0001\u0000\u0000\u0000?@\u0005\b\u0000\u0000"+
-		"@B\u0005\u0005\u0000\u0000AC\u0003\u0014\n\u0000BA\u0001\u0000\u0000\u0000"+
-		"CD\u0001\u0000\u0000\u0000DB\u0001\u0000\u0000\u0000DE\u0001\u0000\u0000"+
-		"\u0000E\u0013\u0001\u0000\u0000\u0000FG\u0007\u0001\u0000\u0000G\u0015"+
-		"\u0001\u0000\u0000\u0000\u0006\u001a\u001e \'2D";
+		"\u0000\u0000;<\u0003\u0010\b\u0000<\u000f\u0001\u0000\u0000\u0000=>\u0005"+
+		"\r\u0000\u0000>A\u0005\u000e\u0000\u0000?A\u0005\u000f\u0000\u0000@=\u0001"+
+		"\u0000\u0000\u0000@?\u0001\u0000\u0000\u0000A\u0011\u0001\u0000\u0000"+
+		"\u0000BC\u0005\b\u0000\u0000CE\u0005\u0005\u0000\u0000DF\u0003\u0014\n"+
+		"\u0000ED\u0001\u0000\u0000\u0000FG\u0001\u0000\u0000\u0000GE\u0001\u0000"+
+		"\u0000\u0000GH\u0001\u0000\u0000\u0000H\u0013\u0001\u0000\u0000\u0000"+
+		"IJ\u0007\u0000\u0000\u0000J\u0015\u0001\u0000\u0000\u0000\u0007\u001a"+
+		"\u001e \'2@G";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

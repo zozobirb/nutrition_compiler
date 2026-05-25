@@ -26,7 +26,8 @@ units: value;
 
 name: value;
 
-value: ID
+value: FRACTION 
+      ID
     | INT;
 //bit repetitive, but during semantic analysis, these will be accessed through there context of parent nodes!
 
@@ -49,6 +50,7 @@ PROTEIN : 'Protein';
 CARBS: 'Carbs';
 FATS: 'Fats';
 CALORIES: 'Calories';
+FRACTION: [1-9][1-9]*'/'[1-9][1-9]*;
 ID: [a-zA-Z][a-zA-Z]*; //(Measurements Validity and food) Handle multi word IDS!
 INT : [0-9][0-9]*;
 WS  : [ \t\r\n]+ -> skip ;
