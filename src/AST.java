@@ -5,91 +5,105 @@ import java.util.Map;
 
 //here's equivalent to RequestBuilder, builds nodes created for AST, when we visit parse tree
 
-abstract class AST {
-    
-}
+abstract class AST {}
+
 class Calculate extends AST{
-    final Query q_node;
-    Calculate(Query q_node){
-        this.q_node = q_node;
-    }
-}
-
-class Query extends AST{
-    //two types of constructor one for Recipe, other Item
-    final Recipe r_node;
-    final Item i_node;
-    final Macro m_node;
+   final Query q_node;
+    final Macros m_node;
     //ensure there is a MACRO node, to be given!!
-    Query(Recipe r_node, Macro m_node){
-        this.r_node = r_node;
-        this.m_node = m_mode;
-    }
-
-    Query(Item i_node, Macro m_node){
-        this.i_node = i_node;
+    Calculate(Query q_node, Macros m_node){
+        this.q_node = q_node;
         this.m_node = m_node;
     }
-    //do something
 
-}
-
-
-
-//Calculate and Query will be type AST
-
-
-
-
-//All other nodes, will extend the Query Node, as they stem from that node
-abstract class SubQuery extends AST {}
-
-class Name extends SubQuery {
-    final String name;
-
-    Name(List<String>names){
-        this.name = String.join(" ", names);
+    Calculate(Query q_node){
+        this.q_node = q_node;
+        this.m_node = null;
     }
+
+
+    //need to deaal with when no MACRO!!
 }
 
-class Measurement extends SubQuery {
-      final String units;
-      final double numeric;
-      Measurement(String units, double numeric){
-        this.units = unit;
-        this.numeric = numeric;
-      }
-}
+class Query extends AST{}
 
-class Macros extends SubQuery {
-    final List<String>Macros;
-    Macros(List<String>Macros){
-        this.Macros = Macros;
-    }
-}
-
-class Ingredients extends SubQuery{
-    final Measurement measure_i;
-    final Name name_i;
-    Ingredients(measure_i, name_i){
-        this.measure_i = measure_i;
-        this.name_i = name_i;
-    }
-}
-
-class Recipe extends SubQuery{
-    final List<Ingredients> recipe;
-    Recipe(List<Ingredients> recipe){
+class Recipe extends Query{
+    final List<Ingredient> recipe;
+    Recipe(List<Ingredient> recipe){
         this.recipe = recipe;
     }
 
 }
 
-class Item extends SubQuery{
-    final List<Ingredients> item;
-    Recipe(List<Ingredients> item){
+class Item extends Query{
+    Ingredients item;
+    Item(Ingredients item){
         this.item = item;
     }
 
 }
 
+class Macros extends AST {
+    final List<Macro>Macros;
+    Macros(List<Macro>Macros){
+        this.Macros = Macros;
+    }
+}
+
+class Macro extends AST {
+    String Macro;
+    Macro(String Macro){
+        this.Macro = Macro;
+    }
+}
+
+
+//All other nodes, will extend the Query Node, as they stem from that node
+abstract class Ingredients extends AST {}
+
+class Name extends Ingredients {
+      final String names;
+      Name(String names){
+       this.names = names;
+      }
+}
+
+class NumericVal extends Ingredients{
+    Double val;
+    NumericVal(Double val){
+        this.val = val;
+    }
+
+    public double getNumericVal(){
+        return this.val;
+    }
+
+}
+
+
+class Units extends Ingredients{
+    String unit;
+    Units(String unit){
+        this.unit = unit;
+    }
+}
+
+class Measurement extends Ingredients {
+      final Units units;
+      final NumericVal numeric;
+      Measurement(Units units, NumericVal numeric){
+        this.units = units;
+        this.numeric = numeric;
+      }
+}
+
+
+
+class Ingredient extends Ingredients{
+    final Measurement measure;
+    final List<Name> name;
+    Ingredient(Measurement measure, List<Name> names){
+        this.measure = measure;
+        this.name = names;
+    }
+}

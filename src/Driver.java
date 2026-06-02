@@ -24,8 +24,8 @@ private List<String> outPrint = new ArrayList<>();
         ParseTree tree = parser.calculate();
 
         // AST
-      //  AstBuilder astBuilder = new AstBuilder();
-      //  Expr ast = astBuilder.visit(tree);
+        AstBuilder astBuilder = new AstBuilder();
+        AST ast = astBuilder.visit(tree);
       //  RequestBuilder req = new RequestBuilder();
 
         // AST implementation test

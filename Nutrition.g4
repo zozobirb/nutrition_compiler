@@ -22,18 +22,21 @@ ingredients:  measurements 'OF' name+
 measurements: value '('units')'
             ;
 //might change so it takes two types, the 3/4 and the 90, so int as value or 3/4 as value ID...
-units: value;
 
-name: value;
+
+
+units: ID;
+
+name: ID;
+
 
 value: FRACTION 
-      ID
     | INT;
 //bit repetitive, but during semantic analysis, these will be accessed through there context of parent nodes!
 
 
-macros : MACROS'=>'(types)+
 
+macros : MACROS'=>'(types)+
 	   ;
 
 types : PROTEIN

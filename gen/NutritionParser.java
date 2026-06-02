@@ -335,8 +335,8 @@ public class NutritionParser extends Parser {
 	public final IngredientsContext ingredients() throws RecognitionException {
 		IngredientsContext _localctx = new IngredientsContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_ingredients);
+		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(45);
@@ -345,24 +345,18 @@ public class NutritionParser extends Parser {
 			match(T__1);
 			setState(48); 
 			_errHandler.sync(this);
-			_alt = 1;
+			_la = _input.LA(1);
 			do {
-				switch (_alt) {
-				case 1:
-					{
-					{
-					setState(47);
-					name();
-					}
-					}
-					break;
-				default:
-					throw new NoViableAltException(this);
+				{
+				{
+				setState(47);
+				name();
+				}
 				}
 				setState(50); 
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				_la = _input.LA(1);
+			} while ( _la==ID );
 			}
 		}
 		catch (RecognitionException re) {
@@ -424,9 +418,7 @@ public class NutritionParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class UnitsContext extends ParserRuleContext {
-		public ValueContext value() {
-			return getRuleContext(ValueContext.class,0);
-		}
+		public TerminalNode ID() { return getToken(NutritionParser.ID, 0); }
 		public UnitsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -445,7 +437,7 @@ public class NutritionParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(57);
-			value();
+			match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -461,9 +453,7 @@ public class NutritionParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class NameContext extends ParserRuleContext {
-		public ValueContext value() {
-			return getRuleContext(ValueContext.class,0);
-		}
+		public TerminalNode ID() { return getToken(NutritionParser.ID, 0); }
 		public NameContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -482,7 +472,7 @@ public class NutritionParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(59);
-			value();
+			match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -499,7 +489,6 @@ public class NutritionParser extends Parser {
 	@SuppressWarnings("CheckReturnValue")
 	public static class ValueContext extends ParserRuleContext {
 		public TerminalNode FRACTION() { return getToken(NutritionParser.FRACTION, 0); }
-		public TerminalNode ID() { return getToken(NutritionParser.ID, 0); }
 		public TerminalNode INT() { return getToken(NutritionParser.INT, 0); }
 		public ValueContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -515,28 +504,20 @@ public class NutritionParser extends Parser {
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_value);
+		int _la;
 		try {
-			setState(64);
-			_errHandler.sync(this);
-			switch (_input.LA(1)) {
-			case FRACTION:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(61);
-				match(FRACTION);
-				setState(62);
-				match(ID);
-				}
-				break;
-			case INT:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(63);
-				match(INT);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(61);
+			_la = _input.LA(1);
+			if ( !(_la==FRACTION || _la==INT) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -577,21 +558,21 @@ public class NutritionParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(66);
+			setState(63);
 			match(MACROS);
-			setState(67);
+			setState(64);
 			match(T__4);
-			setState(69); 
+			setState(66); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(68);
+				setState(65);
 				types();
 				}
 				}
-				setState(71); 
+				setState(68); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 7680L) != 0) );
@@ -632,7 +613,7 @@ public class NutritionParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(70);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 7680L) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -656,7 +637,7 @@ public class NutritionParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u0010L\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\u0010I\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0001\u0000\u0001\u0000\u0001"+
@@ -666,38 +647,37 @@ public class NutritionParser extends Parser {
 		"\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0001\u0004\u0004\u0004"+
 		"1\b\u0004\u000b\u0004\f\u00042\u0001\u0005\u0001\u0005\u0001\u0005\u0001"+
 		"\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001"+
-		"\b\u0001\b\u0001\b\u0003\bA\b\b\u0001\t\u0001\t\u0001\t\u0004\tF\b\t\u000b"+
-		"\t\f\tG\u0001\n\u0001\n\u0001\n\u0000\u0000\u000b\u0000\u0002\u0004\u0006"+
-		"\b\n\f\u000e\u0010\u0012\u0014\u0000\u0001\u0001\u0000\t\fG\u0000\u0016"+
-		"\u0001\u0000\u0000\u0000\u0002 \u0001\u0000\u0000\u0000\u0004\"\u0001"+
-		"\u0000\u0000\u0000\u0006)\u0001\u0000\u0000\u0000\b-\u0001\u0000\u0000"+
-		"\u0000\n4\u0001\u0000\u0000\u0000\f9\u0001\u0000\u0000\u0000\u000e;\u0001"+
-		"\u0000\u0000\u0000\u0010@\u0001\u0000\u0000\u0000\u0012B\u0001\u0000\u0000"+
-		"\u0000\u0014I\u0001\u0000\u0000\u0000\u0016\u0017\u0003\u0002\u0001\u0000"+
-		"\u0017\u0001\u0001\u0000\u0000\u0000\u0018\u001a\u0003\u0004\u0002\u0000"+
-		"\u0019\u001b\u0003\u0012\t\u0000\u001a\u0019\u0001\u0000\u0000\u0000\u001a"+
-		"\u001b\u0001\u0000\u0000\u0000\u001b!\u0001\u0000\u0000\u0000\u001c\u001e"+
-		"\u0003\u0006\u0003\u0000\u001d\u001f\u0003\u0012\t\u0000\u001e\u001d\u0001"+
-		"\u0000\u0000\u0000\u001e\u001f\u0001\u0000\u0000\u0000\u001f!\u0001\u0000"+
-		"\u0000\u0000 \u0018\u0001\u0000\u0000\u0000 \u001c\u0001\u0000\u0000\u0000"+
-		"!\u0003\u0001\u0000\u0000\u0000\"#\u0005\u0006\u0000\u0000#%\u0005\u0001"+
-		"\u0000\u0000$&\u0003\b\u0004\u0000%$\u0001\u0000\u0000\u0000&\'\u0001"+
-		"\u0000\u0000\u0000\'%\u0001\u0000\u0000\u0000\'(\u0001\u0000\u0000\u0000"+
-		"(\u0005\u0001\u0000\u0000\u0000)*\u0005\u0007\u0000\u0000*+\u0005\u0001"+
-		"\u0000\u0000+,\u0003\b\u0004\u0000,\u0007\u0001\u0000\u0000\u0000-.\u0003"+
-		"\n\u0005\u0000.0\u0005\u0002\u0000\u0000/1\u0003\u000e\u0007\u00000/\u0001"+
-		"\u0000\u0000\u000012\u0001\u0000\u0000\u000020\u0001\u0000\u0000\u0000"+
-		"23\u0001\u0000\u0000\u00003\t\u0001\u0000\u0000\u000045\u0003\u0010\b"+
-		"\u000056\u0005\u0003\u0000\u000067\u0003\f\u0006\u000078\u0005\u0004\u0000"+
-		"\u00008\u000b\u0001\u0000\u0000\u00009:\u0003\u0010\b\u0000:\r\u0001\u0000"+
-		"\u0000\u0000;<\u0003\u0010\b\u0000<\u000f\u0001\u0000\u0000\u0000=>\u0005"+
-		"\r\u0000\u0000>A\u0005\u000e\u0000\u0000?A\u0005\u000f\u0000\u0000@=\u0001"+
-		"\u0000\u0000\u0000@?\u0001\u0000\u0000\u0000A\u0011\u0001\u0000\u0000"+
-		"\u0000BC\u0005\b\u0000\u0000CE\u0005\u0005\u0000\u0000DF\u0003\u0014\n"+
-		"\u0000ED\u0001\u0000\u0000\u0000FG\u0001\u0000\u0000\u0000GE\u0001\u0000"+
-		"\u0000\u0000GH\u0001\u0000\u0000\u0000H\u0013\u0001\u0000\u0000\u0000"+
-		"IJ\u0007\u0000\u0000\u0000J\u0015\u0001\u0000\u0000\u0000\u0007\u001a"+
-		"\u001e \'2@G";
+		"\b\u0001\b\u0001\t\u0001\t\u0001\t\u0004\tC\b\t\u000b\t\f\tD\u0001\n\u0001"+
+		"\n\u0001\n\u0000\u0000\u000b\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010"+
+		"\u0012\u0014\u0000\u0002\u0002\u0000\r\r\u000f\u000f\u0001\u0000\t\fC"+
+		"\u0000\u0016\u0001\u0000\u0000\u0000\u0002 \u0001\u0000\u0000\u0000\u0004"+
+		"\"\u0001\u0000\u0000\u0000\u0006)\u0001\u0000\u0000\u0000\b-\u0001\u0000"+
+		"\u0000\u0000\n4\u0001\u0000\u0000\u0000\f9\u0001\u0000\u0000\u0000\u000e"+
+		";\u0001\u0000\u0000\u0000\u0010=\u0001\u0000\u0000\u0000\u0012?\u0001"+
+		"\u0000\u0000\u0000\u0014F\u0001\u0000\u0000\u0000\u0016\u0017\u0003\u0002"+
+		"\u0001\u0000\u0017\u0001\u0001\u0000\u0000\u0000\u0018\u001a\u0003\u0004"+
+		"\u0002\u0000\u0019\u001b\u0003\u0012\t\u0000\u001a\u0019\u0001\u0000\u0000"+
+		"\u0000\u001a\u001b\u0001\u0000\u0000\u0000\u001b!\u0001\u0000\u0000\u0000"+
+		"\u001c\u001e\u0003\u0006\u0003\u0000\u001d\u001f\u0003\u0012\t\u0000\u001e"+
+		"\u001d\u0001\u0000\u0000\u0000\u001e\u001f\u0001\u0000\u0000\u0000\u001f"+
+		"!\u0001\u0000\u0000\u0000 \u0018\u0001\u0000\u0000\u0000 \u001c\u0001"+
+		"\u0000\u0000\u0000!\u0003\u0001\u0000\u0000\u0000\"#\u0005\u0006\u0000"+
+		"\u0000#%\u0005\u0001\u0000\u0000$&\u0003\b\u0004\u0000%$\u0001\u0000\u0000"+
+		"\u0000&\'\u0001\u0000\u0000\u0000\'%\u0001\u0000\u0000\u0000\'(\u0001"+
+		"\u0000\u0000\u0000(\u0005\u0001\u0000\u0000\u0000)*\u0005\u0007\u0000"+
+		"\u0000*+\u0005\u0001\u0000\u0000+,\u0003\b\u0004\u0000,\u0007\u0001\u0000"+
+		"\u0000\u0000-.\u0003\n\u0005\u0000.0\u0005\u0002\u0000\u0000/1\u0003\u000e"+
+		"\u0007\u00000/\u0001\u0000\u0000\u000012\u0001\u0000\u0000\u000020\u0001"+
+		"\u0000\u0000\u000023\u0001\u0000\u0000\u00003\t\u0001\u0000\u0000\u0000"+
+		"45\u0003\u0010\b\u000056\u0005\u0003\u0000\u000067\u0003\f\u0006\u0000"+
+		"78\u0005\u0004\u0000\u00008\u000b\u0001\u0000\u0000\u00009:\u0005\u000e"+
+		"\u0000\u0000:\r\u0001\u0000\u0000\u0000;<\u0005\u000e\u0000\u0000<\u000f"+
+		"\u0001\u0000\u0000\u0000=>\u0007\u0000\u0000\u0000>\u0011\u0001\u0000"+
+		"\u0000\u0000?@\u0005\b\u0000\u0000@B\u0005\u0005\u0000\u0000AC\u0003\u0014"+
+		"\n\u0000BA\u0001\u0000\u0000\u0000CD\u0001\u0000\u0000\u0000DB\u0001\u0000"+
+		"\u0000\u0000DE\u0001\u0000\u0000\u0000E\u0013\u0001\u0000\u0000\u0000"+
+		"FG\u0007\u0001\u0000\u0000G\u0015\u0001\u0000\u0000\u0000\u0006\u001a"+
+		"\u001e \'2D";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
