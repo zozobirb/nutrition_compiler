@@ -128,6 +128,15 @@ public AST visitCalculate(NutritionParser.CalculateContext ctx) {
             return new Name(ctx.ID().getText());//must be recursive
          }
 
+         /*
+          int right = visit(ctx.expr(1));
+
+To get the name+, same here, need to do ctx.name(i)
+if(ctx.name(i) !=null){
+add to list of names in ingredients portion}
+
+
+*/
 
 	@Override 
     public AST visitValue(NutritionParser.ValueContext ctx) { 

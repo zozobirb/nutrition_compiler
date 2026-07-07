@@ -101,9 +101,10 @@ class Measurement extends Ingredients {
 
 class Ingredient extends Ingredients{
     final Measurement measure;
-    final List<Name> name;
+    final List<Name> name;//might need to change
     Ingredient(Measurement measure, List<Name> names){
         this.measure = measure;
         this.name = names;
     }
 }
+

@@ -14,5 +14,16 @@ Testing Tokens:
 
 
 echo "Recipe: 80(g) OF salmon" | java -cp "bin:lib/*" org.antlr.v4.gui.TestRig NutritionLexer tokens -tokens
- echo "Item: 3/4(cups) OF salmon fresh" | java -cp "bin:lib/*" org.ant
-lr.v4.gui.TestRig NutritionLexer tokens -tokens
+ echo "Item: 3/4(cups) OF salmon fresh" | java -cp "bin:lib/*" org.antlr.v4.gui.TestRig NutritionLexer tokens -tokens
+ java org.antlr.v4.gui.TestRig Hello r -gui
+java -cp "bin:lib/*" org.antlr.v4.gui.TestRig Nutrition calculate -gui
+
+
+ echo "Recipe: 
+
+
+ Teaspoon (tsp), Tablespoon (tbsp), Fluid Ounce (floz), Cup (c), Pint (pt), 
+ Quart (qt), Gallon (gal), milliliters, (ml), liters, (L), pounds(lbs), grams (g)
+ To make life easier, refrence the users into how to select which measurement, to not type check each time
+
+ ArrayList<>(List.of( "tsp", "tbsp", "floz", "c", "pt", "qt", "gal", "ml", "l", "lbs", "g"));
