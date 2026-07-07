@@ -58,6 +58,8 @@ public class Driver  {
 
     }
 
+    FoodObject food1 = new FoodObject("salmon", "g", 34.2);
+    food1.foodToString();
     }
 
 }
