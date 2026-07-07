@@ -15,72 +15,63 @@ capiche
 
 
 */ 
-class UnitExtractor{
+class NumericExtractor{
 
 //Objects of this class: List of Strings, to their names
-List<String> unitsCollected = new ArrayList<>();
+List<Double> numCollected = new ArrayList<>();
 
 
 
 //visits the AST, and adds name encountered nodes, to names List
-public void  extractUnit(AST c){
+public void  extractNum(AST c){
 
     //need to visit other nodes, but collect nothing...
     if(c instanceof Calculate cal){
              System.out.println("Calculated visited");
-            extractUnit(cal.q_node);//call by the field NAME given, not datatype.class
+            extractNum(cal.q_node);//call by the field NAME given, not datatype.class
             return;
         }
     
     if(c instanceof Recipe r){
              System.out.println("Recipe visited");
             for(Ingredient i : r.recipe)
-                extractUnit(i);//might be wrong...
+                extractNum(i);//might be wrong...
             return;
         }
 
     if(c instanceof Item i){ 
-            extractUnit(i.item);//might be wrong...
+            extractNum(i.item);//might be wrong...
             return;
         }
 
-
-    if(c instanceof Units u){ 
-            unitsCollected.add(u.unit);
-            return;
-        }
 
     if(c instanceof Measurement t){ 
         //no need to check them, won't get to this point
-        extractUnit(t.units);
-        extractUnit(t.numeric);
+        extractNum(t.numeric);
             return;
         }
     if(c instanceof Ingredient g){ 
         //
         System.out.println("Ingredients visited");
-            extractUnit(g.measure);
+            extractNum(g.measure);
             return;
             
         }
-        //Note I only would need to visit: Recipie, or Item, and Calculate, and Ingredient, then names, to actually get name
-        //totally disregard Macro and Measurement nodes and it's children NOT relevant!
+     if(c instanceof NumericVal v){
+        numCollected.add(v.val);
+     }
 
 }
 
 
 
 //returns the NameExtractor names object... 
-public List<String> processUnits(AST c){
-        unitsCollected.clear();
-        extractUnit(c);
-        System.out.println("Units successfully extracted!!");
-        return unitsCollected; //OR services.getOutput()
+public List<Double> processVals(AST c){
+        numCollected.clear();
+        extractNum(c);
+        System.out.println("Value successfully extracted!!");
+        return numCollected; //OR services.getOutput()
     }
 
 
 }
-
-
-
-

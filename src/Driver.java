@@ -29,8 +29,11 @@ public class Driver  {
         AST ast = astBuilder.visit(tree);
         NameExtractor extN = new NameExtractor();
         UnitExtractor extU = new UnitExtractor();
+        NumericExtractor extV = new NumericExtractor();
          List<String> outPrint = extN.processNames(ast);
          List<String> outPrintUnit = extU.processUnits(ast);
+         List<Double> outPrintVal = extV.processVals(ast);
+
       //  RequestBuilder req = new RequestBuilder();
 
         // AST implementation test
@@ -43,6 +46,16 @@ public class Driver  {
     
      for(String line : outPrintUnit){
              System.out.println(line);
+
+
+
+    }
+
+        for(Double val : outPrintVal){
+             System.out.println(val);
+
+
+
     }
 
     }
