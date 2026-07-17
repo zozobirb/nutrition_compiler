@@ -27,39 +27,38 @@ public class Driver  {
         // AST
         AstBuilder astBuilder = new AstBuilder();
         AST ast = astBuilder.visit(tree);
+
+        /*
         NameExtractor extN = new NameExtractor();
         UnitExtractor extU = new UnitExtractor();
         NumericExtractor extV = new NumericExtractor();
          List<String> outPrint = extN.processNames(ast);
          List<String> outPrintUnit = extU.processUnits(ast);
          List<Double> outPrintVal = extV.processVals(ast);
+*/
+        FoodItemConstructor constructFood = new FoodItemConstructor(ast);
+        List<FoodObject> foodObjsReciever = constructFood.constructFoodObjects();
+
+
 
       //  RequestBuilder req = new RequestBuilder();
 
         // AST implementation test
         
        /*  List<String> outPrint = req.generate(ast);
-       */
-    for(String line : outPrint){
-             System.out.println(line);
-    }
-    
-     for(String line : outPrintUnit){
-             System.out.println(line);
-
 
 
     }
-
+/*
         for(Double val : outPrintVal){
              System.out.println(val);
 
 
 
     }
-
-    FoodObject food1 = new FoodObject("salmon", "g", 34.2);
-    food1.foodToString();
+*/
     }
+
+    
 
 }
